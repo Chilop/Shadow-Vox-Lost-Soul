@@ -31,7 +31,7 @@ public class BlocksScriptable : ScriptableObject
             for (int i = 0; i < TamanoDeArea.x; i++) {
                 for (int j = 0; j < TamanoDeArea.y; j++) {
                     for (int k = 0; k < TamanoDeArea.z; k++) {
-                        Instantiate(BloquesDeDEsarrollo[ElementoAIsntanciar],new Vector3(LocalisacionDeBloque.x+ LocalisacionDeBloque.y+j, LocalisacionDeBloque.z+k), new Quaternion(0, 0, 0, 0),Contenedor.transform);
+                        Instantiate(BloquesDeDEsarrollo[ElementoAIsntanciar],new Vector3(LocalisacionDeBloque.x+i, LocalisacionDeBloque.y+j, LocalisacionDeBloque.z+k), new Quaternion(0, 0, 0, 0),Contenedor.transform);
                     }
                 }
             }

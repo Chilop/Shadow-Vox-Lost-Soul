@@ -136,6 +136,10 @@ MonoBehaviour:
   grass: {fileID: 2219304679024308767, guid: 809c98ee64a90064aadd14256dee2685, type: 3}
   lava: {fileID: 5954304067281190785, guid: 95fd2b1bdc63ff042a04c1fff6297247, type: 3}
   water: {fileID: 9020767734817736429, guid: 90a690ce7b8fce64d80eb29d98ceeae2, type: 3}
+  wood: {fileID: 5436182007930489645, guid: 2aa234a18a2e2ce46b7165c73904c625, type: 3}
+  stone: {fileID: 1254264440271942734, guid: 9facee08c4fdb6c4c965c8245c459a02, type: 3}
+  timerMax: 0
+  timer: 0
 --- !u!65 &8585551616734870088
 BoxCollider:
   m_ObjectHideFlags: 0

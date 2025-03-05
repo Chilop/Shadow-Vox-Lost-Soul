@@ -10,6 +10,8 @@ TagManager:
   - SolidBlock
   - LavaBlock
   - nonInteractiveBlock
+  - Wood
+  - Stone
   layers:
   - Default
   - TransparentFX
