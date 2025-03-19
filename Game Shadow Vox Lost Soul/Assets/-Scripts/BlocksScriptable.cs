@@ -19,12 +19,29 @@ public class BlocksScriptable : ScriptableObject
     [Header("instanciado en area, el area se empieza a generar de la posicion seleccionada a cordenadas positivas o mayores")]
     public Vector3 TamanoDeArea;
     public bool GenerarArea = false;
+    [Header("esta variable guarda cuales seran las areas que existiran en el nivel")]
+    public Vector3[] LongitudDeLasAreasAGuardar;
+    public Vector3[] PosicionDeLasAreasAGuardar;
+    public bool GuardarArea = false;
+    public bool DefinirAreaAInstanciar = false;
+    public int AreaAGuardarODefinir;
 
-    private void OnValidate()
+    private void  OnValidate()
     {
         if (Generar) {
             Instantiate(BloquesDeDEsarrollo[ElementoAIsntanciar], LocalisacionDeBloque, new Quaternion(0, 0, 0, 0));
             Generar = false;
+        }
+        if (GuardarArea) {
+            LongitudDeLasAreasAGuardar[AreaAGuardarODefinir] = TamanoDeArea;
+            PosicionDeLasAreasAGuardar[AreaAGuardarODefinir] = LocalisacionDeBloque;
+            AreaAGuardarODefinir++;
+            GuardarArea = false;
+        }
+        if (DefinirAreaAInstanciar) {
+            TamanoDeArea = LongitudDeLasAreasAGuardar[AreaAGuardarODefinir];
+            LocalisacionDeBloque = PosicionDeLasAreasAGuardar[AreaAGuardarODefinir];
+            DefinirAreaAInstanciar = false;
         }
         if (GenerarArea){
             GameObject Contenedor = Instantiate(EditaMiNombre, LocalisacionDeBloque, new Quaternion(0, 0, 0, 0));
