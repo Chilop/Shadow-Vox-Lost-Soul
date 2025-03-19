@@ -24,35 +24,64 @@ public class BlocksScriptable : ScriptableObject
     public Vector3[] PosicionDeLasAreasAGuardar;
     public bool GuardarArea = false;
     public bool DefinirAreaAInstanciar = false;
+    public bool InstantiateAllSavedAreas = false;
     public int AreaAGuardarODefinir;
 
     private void  OnValidate()
     {
         if (Generar) {
-            Instantiate(BloquesDeDEsarrollo[ElementoAIsntanciar], LocalisacionDeBloque, new Quaternion(0, 0, 0, 0));
+            generarIndividual();
             Generar = false;
         }
         if (GuardarArea) {
-            LongitudDeLasAreasAGuardar[AreaAGuardarODefinir] = TamanoDeArea;
-            PosicionDeLasAreasAGuardar[AreaAGuardarODefinir] = LocalisacionDeBloque;
-            AreaAGuardarODefinir++;
-            GuardarArea = false;
+            guardarArea();
+            GuardarArea= false;
         }
         if (DefinirAreaAInstanciar) {
-            TamanoDeArea = LongitudDeLasAreasAGuardar[AreaAGuardarODefinir];
-            LocalisacionDeBloque = PosicionDeLasAreasAGuardar[AreaAGuardarODefinir];
+            DefinirAreaParaInstanciar();
             DefinirAreaAInstanciar = false;
         }
+        if (InstantiateAllSavedAreas) {
+            instanciarTodasLasAreas();
+            InstantiateAllSavedAreas = false;
+        }
         if (GenerarArea){
-            GameObject Contenedor = Instantiate(EditaMiNombre, LocalisacionDeBloque, new Quaternion(0, 0, 0, 0));
-            for (int i = 0; i < TamanoDeArea.x; i++) {
-                for (int j = 0; j < TamanoDeArea.y; j++) {
-                    for (int k = 0; k < TamanoDeArea.z; k++) {
-                        Instantiate(BloquesDeDEsarrollo[ElementoAIsntanciar],new Vector3(LocalisacionDeBloque.x+i, LocalisacionDeBloque.y+j, LocalisacionDeBloque.z+k), new Quaternion(0, 0, 0, 0),Contenedor.transform);
-                    }
-                }
-            }
+            generarArea();
             GenerarArea = false;
         }
     }
+    public void generarIndividual() {
+        Instantiate(BloquesDeDEsarrollo[ElementoAIsntanciar], LocalisacionDeBloque, new Quaternion(0, 0, 0, 0));
+    }
+    public void guardarArea() {
+        LongitudDeLasAreasAGuardar[AreaAGuardarODefinir] = TamanoDeArea;
+        PosicionDeLasAreasAGuardar[AreaAGuardarODefinir] = LocalisacionDeBloque;
+        AreaAGuardarODefinir++;
+    }
+    public void DefinirAreaParaInstanciar() {
+        TamanoDeArea = LongitudDeLasAreasAGuardar[AreaAGuardarODefinir];
+        LocalisacionDeBloque = PosicionDeLasAreasAGuardar[AreaAGuardarODefinir];
+    }
+    public void instanciarTodasLasAreas() {
+        for (int i = 0; i < LongitudDeLasAreasAGuardar.Length; i++)
+        {
+            TamanoDeArea = LongitudDeLasAreasAGuardar[i];
+            LocalisacionDeBloque = PosicionDeLasAreasAGuardar[i];
+            generarArea();
+        }
+    }
+    public void generarArea() {
+        GameObject Contenedor = Instantiate(EditaMiNombre, LocalisacionDeBloque, new Quaternion(0, 0, 0, 0));
+        for (int i = 0; i < TamanoDeArea.x; i++)
+        {
+            for (int j = 0; j < TamanoDeArea.y; j++)
+            {
+                for (int k = 0; k < TamanoDeArea.z; k++)
+                {
+                    Instantiate(BloquesDeDEsarrollo[ElementoAIsntanciar], new Vector3(LocalisacionDeBloque.x + i, LocalisacionDeBloque.y + j, LocalisacionDeBloque.z + k), new Quaternion(0, 0, 0, 0), Contenedor.transform);
+                }
+            }
+        }
+    }
+
 }

@@ -1,8 +1,9 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TransitionScript : MonoBehaviour
 {
-    public Transform positionOfSpawn,playerPosition,camPosition;
+    public Transform positionOfSpawn,playerPosition,camPosition,OldCenter,NewCenter;
     public GameObject nextLevelObject, thisLevel;
     public float timer = 0, transitionTime = 2;
     public bool nextLevel;
