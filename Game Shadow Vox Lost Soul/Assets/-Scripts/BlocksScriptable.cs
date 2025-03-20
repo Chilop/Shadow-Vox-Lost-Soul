@@ -24,6 +24,7 @@ public class BlocksScriptable : ScriptableObject
     public Vector3[] PosicionDeLasAreasAGuardar;
     public bool GuardarArea = false;
     public bool DefinirAreaAInstanciar = false;
+    public bool generarTodasLasAreasGuardadas = false;
     public int AreaAGuardarODefinir;
 
     private void  OnValidate()
@@ -33,14 +34,11 @@ public class BlocksScriptable : ScriptableObject
             Generar = false;
         }
         if (GuardarArea) {
-            LongitudDeLasAreasAGuardar[AreaAGuardarODefinir] = TamanoDeArea;
-            PosicionDeLasAreasAGuardar[AreaAGuardarODefinir] = LocalisacionDeBloque;
-            AreaAGuardarODefinir++;
+            guardarArea();
             GuardarArea = false;
         }
         if (DefinirAreaAInstanciar) {
-            TamanoDeArea = LongitudDeLasAreasAGuardar[AreaAGuardarODefinir];
-            LocalisacionDeBloque = PosicionDeLasAreasAGuardar[AreaAGuardarODefinir];
+            definirAreaAInstanciar();
             DefinirAreaAInstanciar = false;
         }
         if (GenerarArea){
@@ -54,5 +52,14 @@ public class BlocksScriptable : ScriptableObject
             }
             GenerarArea = false;
         }
+    }
+    private void guardarArea() {
+        LongitudDeLasAreasAGuardar[AreaAGuardarODefinir] = TamanoDeArea;
+        PosicionDeLasAreasAGuardar[AreaAGuardarODefinir] = LocalisacionDeBloque;
+        AreaAGuardarODefinir++;
+    }
+    private void definirAreaAInstanciar() {
+        TamanoDeArea = LongitudDeLasAreasAGuardar[AreaAGuardarODefinir];
+        LocalisacionDeBloque = PosicionDeLasAreasAGuardar[AreaAGuardarODefinir];
     }
 }
