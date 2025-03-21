@@ -16,9 +16,9 @@ MonoBehaviour:
   BloquesDeDEsarrollo:
   - {fileID: 7460591863560545983, guid: 2ca194f6f4c10b044874b0301c5adf58, type: 3}
   ElementoAIsntanciar: 0
-  LocalisacionDeBloque: {x: 50, y: 0, z: 0}
+  LocalisacionDeBloque: {x: 0, y: 0, z: 0}
   Generar: 0
-  TamanoDeArea: {x: 16, y: 16, z: 16}
+  TamanoDeArea: {x: 64, y: 64, z: 64}
   GenerarArea: 0
   LongitudDeLasAreasAGuardar:
   - {x: 16, y: 16, z: 16}

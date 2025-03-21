@@ -6,7 +6,8 @@ public class TransitionScript : MonoBehaviour
     public Transform positionOfSpawn,playerPosition,camPosition,OldCenter,NewCenter;
     public GameObject nextLevelObject, thisLevel;
     public float timer = 0, transitionTime = 2;
-    public bool nextLevel;
+    public bool nextLevel,MoveCamOnce=false;
+    public CamMovementBetweenLevels CMBL;
     private void Start()
     {
         nextLevel = false;
@@ -22,6 +23,11 @@ public class TransitionScript : MonoBehaviour
     {
         if (nextLevel) {
             timer += 1 * Time.deltaTime;
+            if (MoveCamOnce)
+            {
+                CMBL.LevelChange();
+                MoveCamOnce = false;
+            }
             nextLevelObject.SetActive(true);
             if (timer > transitionTime)
             {
@@ -29,6 +35,7 @@ public class TransitionScript : MonoBehaviour
                 thisLevel.SetActive(false);
                 timer = 0;
                 nextLevel = false;
+                MoveCamOnce=true;
             }
         }
     }
