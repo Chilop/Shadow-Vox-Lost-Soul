@@ -1,46 +1,46 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-     [SerializeField] private Rigidbody _rb; 
-     private float _movementX;
-     private float _movementY;
-     private float _movementZ;
-     
-     [SerializeField] private float speed = 3f; 
-     [SerializeField] private float jumpForce = 5f;
-     
-     [SerializeField] private Vector3 moveDirection;
-     
-     void Start()
-        {
-            _rb = GetComponent<Rigidbody>();
-        }
-     
-     public void OnMove(InputAction.CallbackContext context)
-        {
-     
-            Vector2 movementVector = context.ReadValue<Vector2>();
+    private Rigidbody _rb;
+    private Vector2 _moveInput;
+    private bool _isGrounded;
     
-     
-            _movementX = movementVector.x; 
-            _movementY = movementVector.y; 
-            
-            Debug.Log(context.ReadValue<Vector2>());
-        }
-    
-     
-     private void FixedUpdate()
-        {
-         moveDirection = new Vector3(_movementX,0, _movementY);
-            _rb.AddForce(moveDirection * speed);
-        }
+    [Header("Movement Settings")]
+    public float speed = 5f;
+    public float jumpForce = 8f;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
 
-        public void OnJump(InputAction.CallbackContext ctx)
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        _isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    private void FixedUpdate()
+    {
+        Vector3 moveDirection = new Vector3(_moveInput.x, 0, _moveInput.y);
+        _rb.MovePosition(transform.position + moveDirection * (speed * Time.fixedDeltaTime));
+    }
+    
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        _moveInput = context.ReadValue<Vector2>();
+    }
+    
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed && _isGrounded)
         {
-                _rb.AddForce(Vector3.up * jumpForce);
-                Debug.Log(ctx.performed);
+            _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, jumpForce, _rb.linearVelocity.z);
         }
+    }
 }
