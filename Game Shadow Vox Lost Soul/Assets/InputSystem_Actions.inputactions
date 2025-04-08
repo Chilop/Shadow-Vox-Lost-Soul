@@ -483,7 +483,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "2D Vector",
+                    "name": "Keyboard",
                     "id": "4b2165d0-5dbd-4275-91a3-4b721c6091a0",
                     "path": "2DVector",
                     "interactions": "",
@@ -514,6 +514,17 @@
                     "action": "RotateCamera",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b30f2cbc-9c68-4ffa-b92e-ef01f1c4544a",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "RotateCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
