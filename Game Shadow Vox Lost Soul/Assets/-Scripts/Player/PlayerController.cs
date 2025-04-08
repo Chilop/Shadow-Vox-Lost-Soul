@@ -10,11 +10,13 @@ public class PlayerController : MonoBehaviour
     private bool _isGrounded;
     
     [Header("Movement Settings")]
-    public float speed = 5f;
-    public float jumpForce = 8f;
-    public Transform groundCheck;
-    public LayerMask groundLayer;
+    [SerializeField]private float speed = 5f;
+    [SerializeField]private float jumpForce = 8f;
+    [SerializeField]private Transform groundCheck;
+    [SerializeField]private LayerMask groundLayer;
 
+    private float _targetAngle;
+    private float _angle;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -27,13 +29,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 moveDirection = new Vector3(_moveInput.x, 0, _moveInput.y);
+        Vector3 moveDirection = new Vector3(_moveInput.x, 0, _moveInput.y).normalized;
         _rb.MovePosition(transform.position + moveDirection * (speed * Time.fixedDeltaTime));
     }
     
     public void OnMove(InputAction.CallbackContext context)
     {
         _moveInput = context.ReadValue<Vector2>();
+        
     }
     
     public void OnJump(InputAction.CallbackContext context)
