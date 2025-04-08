@@ -6,7 +6,7 @@ OcclusionCullingSettings:
   serializedVersion: 2
   m_OcclusionBakeSettings:
     smallestOccluder: 0.1
-    smallestHole: 10
+    smallestHole: 0
     backfaceThreshold: 100
   m_SceneGUID: 35eeb76946afe644fb7a47eb909ab7cc
   m_OcclusionCullingData: {fileID: 36300000, guid: 27ec107a68ac64d4489b9b61283a6802, type: 2}
