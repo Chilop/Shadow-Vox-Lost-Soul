@@ -794,7 +794,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         InputAction: {fileID: -504206074709786403, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-        Gain: 20
+        Gain: 40
         LegacyInput: 
         LegacyGain: 1
         CancelDeltaTime: 0
@@ -820,7 +820,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         InputAction: {fileID: 765391547431205331, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-        Gain: 10
+        Gain: -1
         LegacyInput: 
         LegacyGain: 1
         CancelDeltaTime: 0
@@ -886,7 +886,7 @@ MonoBehaviour:
   RadialAxis:
     Value: 1
     Center: 1
-    Range: {x: 1, y: 1}
+    Range: {x: 0.4, y: 1}
     Wrap: 0
     Recentering:
       Enabled: 0
