@@ -4484,6 +4484,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df2718bd8c711b4d8bce8f7622acfb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 606041332}
+  OnLeverButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &868425105
 Transform:
   m_ObjectHideFlags: 0
@@ -5725,7 +5729,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1060397872
 MeshRenderer:
