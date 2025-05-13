@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3650194825848502405}
   - component: {fileID: 7458116968522883786}
   - component: {fileID: 4201291301506574269}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StoneBlock
-  m_TagString: nonInteractiveBlock
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 18

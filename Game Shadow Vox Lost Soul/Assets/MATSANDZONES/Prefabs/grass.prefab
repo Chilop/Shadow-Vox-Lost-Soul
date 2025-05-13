@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 9207408149281412800}
   - component: {fileID: 8244229144052769475}
   - component: {fileID: 38959018239663832}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: grass
-  m_TagString: SolidBlock
+  m_TagString: Navigable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 18

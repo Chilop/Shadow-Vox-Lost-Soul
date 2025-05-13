@@ -23,6 +23,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected virtual void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        Debug.Log("Player found");
     }
 
     protected virtual void Update()
@@ -63,6 +64,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
         {
             if (!Physics.Raycast(transform.position, directionToPlayer, visionRange))
             {
+                Debug.Log("Player is in vision");
                 return true;
             }
         }
@@ -105,7 +107,6 @@ public abstract class BaseEnemyAI : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        // Dibujar el cono de visión
         Gizmos.color = new Color(1f, 1f, 0f, 0.2f); // Amarillo semi-transparente
 
         Vector3 forward = transform.forward * visionRange;
