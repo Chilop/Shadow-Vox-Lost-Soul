@@ -26,13 +26,13 @@ public class AudioManager : Singleton<IAudioSource>, IAudioSource
 
         private void InitializeSFX()
         {
-            SFXVolume = SaveSystemManager.Source.GetSavedSFXVolume();
+           // SFXVolume = SaveSystemManager.Source.GetSavedSFXVolume();
             _sfxMixer.SetFloat("sfxVol", Mathf.Lerp(-80f, 0f, SFXVolume));
         }
 
         private void InitializeMusic()
         {
-            MusicVolume = SaveSystemManager.Source.GetSavedMusicVolume();
+            //MusicVolume = SaveSystemManager.Source.GetSavedMusicVolume();
             _musicMixer.SetFloat("musicVol", Mathf.Lerp(-80f, 0f, MusicVolume));
         }
 
@@ -79,7 +79,7 @@ public class AudioManager : Singleton<IAudioSource>, IAudioSource
             if (dB < MindB+1)
                 dB = SilentdB;
             _sfxMixer.SetFloat("sfxVol", dB);
-            SaveSystemManager.Source.SaveSFXVolume(SFXVolume);
+           // SaveSystemManager.Source.SaveSFXVolume(SFXVolume);
         }
 
         public void SetMusicVolume(float newVolume)
@@ -89,7 +89,7 @@ public class AudioManager : Singleton<IAudioSource>, IAudioSource
             if (dB < MindB+1)
                 dB = SilentdB;
             _musicMixer.SetFloat("musicVol", dB);
-            SaveSystemManager.Source.SaveMusicVolume(MusicVolume);
+           // SaveSystemManager.Source.SaveMusicVolume(MusicVolume);
         }
     }
-}
+
